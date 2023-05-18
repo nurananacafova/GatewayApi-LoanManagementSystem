@@ -49,7 +49,7 @@ try
     app.UseAuthorization();
     app.UseSwaggerForOcelotUI(options =>
     {
-        options.PathToSwaggerGenerator = "swagger/docs";
+        options.PathToSwaggerGenerator = "/swagger/docs";
         // options.ReConfigureUpstreamSwaggerJson=Alteru
     });
     app.MapGet("/", () => "Hello World!");
