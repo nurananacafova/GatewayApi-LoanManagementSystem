@@ -15,10 +15,10 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.Configuration.AddJsonFile($@"ocelot.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
-        true,
+    builder.Configuration.AddJsonFile($@"ocelot.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true,
         true);
     builder.Services.AddOcelot(builder.Configuration);
+    
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerForOcelot(builder.Configuration);
@@ -56,7 +56,7 @@ try
             opt.DownstreamSwaggerEndPointBasePath = "/gateway/swagger/docs";
             opt.PathToSwaggerGenerator = "/swagger/docs";
         }
-);
+    );
     app.MapGet("/", () => "Hello World!");
     app.MapControllers();
     app.UseOcelotMiddleware();
