@@ -14,6 +14,21 @@
         "GET"
       ],
       "SwaggerKey": "subscribers"
+    },
+    {
+      "DownstreamPathTemplate": "/api/LoanService/GetAllLoans",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "nurananacafova-loanservice.nativeci.app",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/LoanService/GetAllLoans",
+      "UpstreamHttpMethod": [
+        "GET"
+      ],
+      "SwaggerKey": "loans"
     }
   ],
   "GlobalConfiguration": {
