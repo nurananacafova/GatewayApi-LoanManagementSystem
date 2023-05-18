@@ -44,6 +44,7 @@ try
 
     {
         app.UseSwagger();
+        app.UseSwaggerUI();
     }
 
     app.UseHttpsRedirection();
