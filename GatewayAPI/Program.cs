@@ -56,7 +56,7 @@ try
             opt.DownstreamSwaggerEndPointBasePath = "/gateway/swagger/docs";
             opt.PathToSwaggerGenerator = "/swagger/docs";
         }
-    );
+    ).UseOcelot().Wait();
     app.MapGet("/", () => "Hello World!");
     app.MapControllers();
     app.UseOcelotMiddleware();
