@@ -5,7 +5,7 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "https://nurananacafova-subscriberservice.nativeci.app",
+          "Host": "https://nurananacafova-subscriberservice.nativeci.app"
         }
       ],
       "UpstreamPathTemplate": "/Subscribers/GetAllSubscribers",
