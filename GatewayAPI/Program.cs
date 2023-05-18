@@ -48,7 +48,14 @@ try
 
     app.UseHttpsRedirection();
     app.UseAuthorization();
-    app.UseSwaggerForOcelotUI();
+    app.UseSwaggerForOcelotUI(opt =>
+        {
+            opt.DownstreamSwaggerHeaders = new[]
+                { new KeyValuePair<string, string>("SecretKey", builder.Configuration["Jwt:Key"]) };
+            opt.DownstreamSwaggerEndPointBasePath = "/gateway/swagger/docs";
+            opt.PathToSwaggerGenerator = "/swagger/docs";
+        }
+);
     app.MapGet("/", () => "Hello World!");
     app.MapControllers();
     app.UseOcelotMiddleware();
