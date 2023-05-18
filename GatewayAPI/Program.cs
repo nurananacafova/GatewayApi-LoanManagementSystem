@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Sockets;
 using LoanService;
 using Microsoft.AspNetCore;
+using MMLib.SwaggerForOcelot.DependencyInjection;
 using NLog;
 using NLog.Web;
 using Ocelot.DependencyInjection;
@@ -19,9 +20,13 @@ try
         true);
     builder.Services.AddOcelot(builder.Configuration);
     builder.Services.AddEndpointsApiExplorer();
-
+    builder.Services.AddSwaggerForOcelot(builder.Configuration);
     builder.Services.AddSwaggerGen();
 
+// builder.Configuration.AddOcelotWithSwaggerSupport(options =>
+// {
+//     options.Folder
+// })
 
     builder.WebHost.UseUrls("http://*:5003");
 // builder.Host.UseWindowsService();
@@ -35,11 +40,18 @@ try
 
     var app = builder.Build();
     if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
+
     {
         app.UseSwagger();
-        app.UseSwaggerUI();
     }
 
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+    app.UseSwaggerForOcelotUI(options =>
+    {
+        options.PathToSwaggerGenerator = "swagger/docs";
+        // options.ReConfigureUpstreamSwaggerJson=Alteru
+    });
     app.MapGet("/", () => "Hello World!");
     app.MapControllers();
     app.UseOcelotMiddleware();

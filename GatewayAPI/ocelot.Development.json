@@ -12,9 +12,23 @@
       "UpstreamPathTemplate": "/Subscribers/GetAllSubscribers",
       "UpstreamHttpMethod": [
         "GET"
+      ],
+      "SwaggerKey": "subscribers"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "subscribers",
+      "Config": [
+        {
+          "Name": "Subscriber API",
+          "Version": "v1",
+          "Url": "http://localhost:5100/swagger/v1/swagger.json"
+        }
       ]
     }
   ],
+  
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:5003"
   }
