@@ -1,0 +1,102 @@
+2023-05-18 14:48:20.3768||ERROR|Program|System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.IAsyncSwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.IAsyncSwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+ ---> System.InvalidOperationException: No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.IAsyncSwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+ ---> System.InvalidOperationException: No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #2) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+ ---> System.InvalidOperationException: No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2023-05-18 14:49:30.5724||ERROR|Program|System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.IAsyncSwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.IAsyncSwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.) (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+ ---> System.InvalidOperationException: No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.IAsyncSwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+ ---> System.InvalidOperationException: No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+ ---> (Inner Exception #2) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+ ---> System.InvalidOperationException: No constructor for type 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator' can be instantiated using services from the service container and default values.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(ICollection`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2023-05-18 14:54:01.5429||TRACE|Ocelot.Logging.OcelotDiagnosticListener|requestId: no request id, previousRequestId: no previous request id, message: MiddlewareStarting: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware; / 
+2023-05-18 14:54:01.6053||TRACE|Ocelot.Logging.OcelotDiagnosticListener|requestId: no request id, previousRequestId: no previous request id, message: MiddlewareStarting: Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware; / 
+2023-05-18 14:54:01.6440||TRACE|Ocelot.Logging.OcelotDiagnosticListener|requestId: no request id, previousRequestId: no previous request id, message: MiddlewareStarting: Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+<>c__DisplayClass5_1; / 
+2023-05-18 14:54:01.7038||DEBUG|Ocelot.Errors.Middleware.ExceptionHandlerMiddleware|requestId: 0HMQNHOO8MUUA:00000002, previousRequestId: no previous request id, message: ocelot pipeline started 
+2023-05-18 14:54:01.7038||DEBUG|Ocelot.DownstreamRouteFinder.Middleware.DownstreamRouteFinderMiddleware|requestId: 0HMQNHOO8MUUA:00000002, previousRequestId: no previous request id, message: Upstream url path is / 
+2023-05-18 14:54:01.7203||WARN|Ocelot.DownstreamRouteFinder.Middleware.DownstreamRouteFinderMiddleware|requestId: 0HMQNHOO8MUUA:00000002, previousRequestId: no previous request id, message: DownstreamRouteFinderMiddleware setting pipeline errors. IDownstreamRouteFinder returned Error Code: UnableToFindDownstreamRouteError Message: Failed to match Route configuration for upstream path: /, verb: GET. 
+2023-05-18 14:54:01.7203||WARN|Ocelot.Responder.Middleware.ResponderMiddleware|requestId: 0HMQNHOO8MUUA:00000002, previousRequestId: no previous request id, message: Error Code: UnableToFindDownstreamRouteError Message: Failed to match Route configuration for upstream path: /, verb: GET. errors found in ResponderMiddleware. Setting error response for request path:/, request method: GET 
+2023-05-18 14:54:01.7203||DEBUG|Ocelot.Errors.Middleware.ExceptionHandlerMiddleware|requestId: 0HMQNHOO8MUUA:00000002, previousRequestId: no previous request id, message: ocelot pipeline finished 
+2023-05-18 14:54:01.7203||INFO|LoanService.OcelotMiddleware|Request: http localhost:5003/  
+Request headers:
+Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Connection:keep-alive
+Host:localhost:5003
+User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36
+Accept-Encoding:gzip, deflate, br
+Accept-Language:en-US,en;q=0.9
+Upgrade-Insecure-Requests:1
+sec-ch-ua:"Google Chrome";v="113", "Chromium";v="113", "Not-A.Brand";v="24"
+sec-ch-ua-mobile:?0
+sec-ch-ua-platform:"Windows"
+Sec-Fetch-Site:none
+Sec-Fetch-Mode:navigate
+Sec-Fetch-User:?1
+Sec-Fetch-Dest:document
+Response: 404: 
+Response headers: 
+ 
+2023-05-18 14:54:01.7307||TRACE|Ocelot.Logging.OcelotDiagnosticListener|requestId: 0HMQNHOO8MUUA:00000002, previousRequestId: no previous request id, message: MiddlewareFinished: Microsoft.AspNetCore.Builder.UseMiddlewareExtensions+<>c__DisplayClass5_1; 404 
+2023-05-18 14:54:01.7307||TRACE|Ocelot.Logging.OcelotDiagnosticListener|requestId: 0HMQNHOO8MUUA:00000002, previousRequestId: no previous request id, message: MiddlewareFinished: Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware; 404 
+2023-05-18 14:54:01.7307||TRACE|Ocelot.Logging.OcelotDiagnosticListener|requestId: 0HMQNHOO8MUUA:00000002, previousRequestId: no previous request id, message: MiddlewareFinished: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware; 404 
