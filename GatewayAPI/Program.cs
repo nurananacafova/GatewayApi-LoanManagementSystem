@@ -14,7 +14,8 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    builder.Configuration.AddJsonFile($@"ocelot.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true,
+    builder.Configuration.AddJsonFile($@"ocelot.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
+        true,
         true);
     builder.Services.AddOcelot(builder.Configuration);
     builder.Services.AddEndpointsApiExplorer();
@@ -28,12 +29,12 @@ try
 // WebHost.CreateDefaultBuilder(args).UseUrls("https://localhost:7171");
 
     var logPath = Path.Combine(Directory.GetCurrentDirectory(), "Logs");
-    NLog.GlobalDiagnosticsContext.Set("LogDirectory",logPath);
+    NLog.GlobalDiagnosticsContext.Set("LogDirectory", logPath);
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
 
     var app = builder.Build();
-    if (app.Environment.IsDevelopment()||app.Environment.IsProduction())
+    if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     {
         app.UseSwagger();
         app.UseSwaggerUI();
@@ -44,7 +45,6 @@ try
     app.UseOcelotMiddleware();
     await app.UseOcelot();
     app.Run();
-
 }
 catch (Exception ex)
 {
