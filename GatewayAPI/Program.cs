@@ -19,6 +19,7 @@ try
         true,
         true);
     builder.Services.AddOcelot(builder.Configuration);
+    builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerForOcelot(builder.Configuration);
     builder.Services.AddSwaggerGen();
@@ -47,11 +48,7 @@ try
 
     app.UseHttpsRedirection();
     app.UseAuthorization();
-    app.UseSwaggerForOcelotUI(options =>
-    {
-        options.PathToSwaggerGenerator = "/swagger/docs";
-        // options.ReConfigureUpstreamSwaggerJson=Alteru
-    });
+    app.UseSwaggerForOcelotUI();
     app.MapGet("/", () => "Hello World!");
     app.MapControllers();
     app.UseOcelotMiddleware();
