@@ -17,6 +17,7 @@ try
     builder.Configuration.AddJsonFile($@"ocelot.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true,
         true);
     builder.Services.AddOcelot(builder.Configuration);
+    builder.Services.AddSwaggerGen();
 
 
     builder.WebHost.UseUrls("http://*:5003");
@@ -30,6 +31,12 @@ try
     builder.Host.UseNLog();
 
     var app = builder.Build();
+    if (app.Environment.IsDevelopment()||app.Environment.IsProduction())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
     app.MapGet("/", () => "Hello World!");
     app.MapControllers();
     app.UseOcelotMiddleware();
