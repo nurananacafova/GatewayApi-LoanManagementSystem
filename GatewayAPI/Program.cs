@@ -17,6 +17,8 @@ try
     builder.Configuration.AddJsonFile($@"ocelot.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true,
         true);
     builder.Services.AddOcelot(builder.Configuration);
+    builder.Services.AddEndpointsApiExplorer();
+
     builder.Services.AddSwaggerGen();
 
 
