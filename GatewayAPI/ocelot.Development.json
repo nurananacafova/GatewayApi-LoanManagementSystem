@@ -6,6 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "nurananacafova-subscriberservice.nativeci.app",
+          "Port": 5000
         }
       ],
       "UpstreamPathTemplate": "/Subscribers/GetAllSubscribers",
@@ -20,6 +21,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "nurananacafova-loanservice.nativeci.app",
+          "Port": 5002
         }
       ],
       "UpstreamPathTemplate": "/LoanService/GetAllLoans",
