@@ -2,33 +2,205 @@
   "Routes": [
     {
       "DownstreamPathTemplate": "/api/Subscribers/GetAllSubscribers",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "nurananacafova-subscriberservice.nativeci.app",
+          "Host": "subscriber_con",
           "Port": 5000
         }
       ],
       "UpstreamPathTemplate": "/Subscribers/GetAllSubscribers",
       "UpstreamHttpMethod": [
         "GET"
-      ],
-      "SwaggerKey": "subscribers"
+      ]
     },
     {
-      "DownstreamPathTemplate": "/api/LoanService/GetAllLoans",
-      "DownstreamScheme": "https",
+      "DownstreamPathTemplate": "/api/Subscribers/GetSubscriber?id={id}",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "nurananacafova-loanservice.nativeci.app",
+          "Host": "subscriber_con",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/Subscribers/GetSubscriber?id={id}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Subscribers/GetSubscriber/language?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "subscriber_con",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/Subscribers/GetSubscriber/language?id={id}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Subscribers/RegisterSubscriber",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "subscriber_con",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/Subscribers/RegisterSubscriber",
+      "UpstreamHttpMethod": [
+        "Post"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Subscribers/UpdateSubscriber",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "subscriber_con",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/Subscribers/UpdateSubscriber",
+      "UpstreamHttpMethod": [
+        "Put"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Subscribers/RemoveSubscriber?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "subscriber_con",
+          "Port": 5000
+        }
+      ],
+      "UpstreamPathTemplate": "/Subscribers/RemoveSubscriber?id={id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ]
+    },
+    
+    
+    
+    
+    {
+      "DownstreamPathTemplate": "/api/LoanService/GetAllLoans",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "loanservice_con",
           "Port": 5002
         }
       ],
       "UpstreamPathTemplate": "/LoanService/GetAllLoans",
       "UpstreamHttpMethod": [
         "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/LoanService/GetLoan?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "loanservice_con",
+          "Port": 5002
+        }
       ],
-      "SwaggerKey": "loans"
+      "UpstreamPathTemplate": "/LoanService/GetLoan?id={id}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/LoanService/GetLoan/amount?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "loanservice_con",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/LoanService/GetLoan/amount?id={id}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/LoanService/ProvideLoan",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "loanservice_con",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/LoanService/ProvideLoan",
+      "UpstreamHttpMethod": [
+        "Post"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/LoanService/RepayLoan",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "loanservice_con",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/LoanService/RepayLoan",
+      "UpstreamHttpMethod": [
+        "Put"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/LoanService/ArchiveLoan?id={id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "loanservice_con",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/LoanService/ArchiveLoan?id={id}",
+      "UpstreamHttpMethod": [
+        "Delete"
+      ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/ScoringService/ScoreSubscriber?id={id}&amount={amount}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "scoringservice_con",
+          "Port": 5004
+        }
+      ],
+      "UpstreamPathTemplate": "/ScoringService/ScoreSubscriber?id={id}&amount={amount}",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Mail/SendMail",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "responseservice_con",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/Mail/SendMail",
+      "UpstreamHttpMethod": [
+        "Get"
+      ]
     }
   ],
   "GlobalConfiguration": {

@@ -1,8 +1,4 @@
-using System.Net;
-using System.Net.Sockets;
 using LoanService;
-using Microsoft.AspNetCore;
-using MMLib.SwaggerForOcelot.DependencyInjection;
 using NLog;
 using NLog.Web;
 using Ocelot.DependencyInjection;
@@ -14,18 +10,14 @@ var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurre
 try
 {
     var builder = WebApplication.CreateBuilder(args);
-
-    builder.Configuration.AddJsonFile($@"ocelot.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json", true,
+    builder.WebHost.UseUrls("http://*:5003");
+    builder.Configuration.AddJsonFile($@"ocelot.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
+        true,
         true);
     builder.Services.AddOcelot(builder.Configuration);
-    
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerForOcelot(builder.Configuration);
-    builder.Services.AddSwaggerGen();
-    
 
-    builder.WebHost.UseUrls("http://*:5003");
 // builder.Host.UseWindowsService();
 // builder.WebHost.UseKestrel().UseUrls("http://localhost:5001");
 // WebHost.CreateDefaultBuilder(args).UseUrls("https://localhost:7171");
@@ -36,24 +28,9 @@ try
     builder.Host.UseNLog();
 
     var app = builder.Build();
-    if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
-
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
 
     app.UseHttpsRedirection();
     app.UseAuthorization();
-    app.UseSwaggerForOcelotUI(
-        // opt =>
-        // {
-        //     opt.DownstreamSwaggerHeaders = new[]
-        //         { new KeyValuePair<string, string>("SecretKey", builder.Configuration["Jwt:Key"]) };
-        //     opt.DownstreamSwaggerEndPointBasePath = "/gateway/swagger/docs";
-        //     opt.PathToSwaggerGenerator = "/swagger/docs";
-        // }
-    );
     app.MapGet("/", () => "Hello World!");
     app.MapControllers();
     app.UseOcelotMiddleware();
